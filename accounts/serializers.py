@@ -14,15 +14,16 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
 
 class UserLoginSerializer(serializers.Serializer):
-    email=serializers.EmailField(max_length=255)
+    username=serializers.CharField(max_length=255)
     password=serializers.CharField(max_length=255)
 
     def validate(self, data):
-        email=data.get('email')
+        import pdb; pdb.set_trace()
+        username=data.get('username')
         password=data.get('password')
 
-        if email and password:
-            user=authenticate(email=email, password=password)
+        if username and password:
+            user=authenticate(username=username, password=password)
 
             if user:
                 if user.is_verified:
@@ -31,6 +32,6 @@ class UserLoginSerializer(serializers.Serializer):
                     msg="Please verify your account"
                     raise serializers.ValidationError(msg)
             else:
-                msg="Email and Password is not registered"
+                msg="Username and Password is not registered"
                 raise serializers.ValidationError(msg)
         return data

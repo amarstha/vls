@@ -19,7 +19,7 @@ class UserRegisterView(APIView):
 
 class UserLoginView(APIView):
 
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         serializer=UserLoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user=serializer.validated_data['user']
