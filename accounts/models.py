@@ -15,6 +15,7 @@ class Accounts(models.Model):
     country=models.CharField(max_length=100, blank=True, null=True)
     address=models.CharField(max_length=255, blank=True, null=True)
     profile_pic=models.ImageField(upload_to="profile", blank=True, null=True)
+    is_verified=models.BooleanField(default=False)
 
 
     def __str__(self):
