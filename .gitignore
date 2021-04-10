@@ -1,5 +1,13 @@
 venv
 frontend/node_modules
+frontend/documentation
+frontend/bower.json
+frontend/CHANGELOG.md
+frontend/gulpfile.js
+frontend/ISSUE_TEMPLATE.md
+frontend/jsconfig.json
+frontend/LICENSE.md
+frontend/package-lock.json
 **/migrations
 **/__pycache__
 /.idea
