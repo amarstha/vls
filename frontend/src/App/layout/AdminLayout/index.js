@@ -16,31 +16,8 @@ import './app.scss';
 
 class AdminLayout extends Component {
 
-    fullScreenExitHandler = () => {
-        if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
-            this.props.onFullScreenExit();
-        }
-    };
-
-    componentWillMount() {
-        if (this.props.windowWidth > 992 && this.props.windowWidth <= 1024 && this.props.layout !== 'horizontal') {
-            this.props.onComponentWillMount();
-        }
-    }
-
-    mobileOutClickHandler() {
-        if (this.props.windowWidth < 992 && this.props.collapseMenu) {
-            this.props.onComponentWillMount();
-        }
-    }
 
     render() {
-
-        /* full screen exit call */
-        document.addEventListener('fullscreenchange', this.fullScreenExitHandler);
-        document.addEventListener('webkitfullscreenchange', this.fullScreenExitHandler);
-        document.addEventListener('mozfullscreenchange', this.fullScreenExitHandler);
-        document.addEventListener('MSFullscreenChange', this.fullScreenExitHandler);
 
         const menu = routes.map((route, index) => {
             return (route.component) ? (
@@ -64,7 +41,7 @@ class AdminLayout extends Component {
                         <div className="pcoded-wrapper">
                             <div className="pcoded-content">
                                 <div className="pcoded-inner-content">
-                                    <Breadcrumb />
+                                    {/* <Breadcrumb /> */}
                                     <div className="main-body">
                                         <div className="page-wrapper">
                                             <Suspense fallback={<Loader/>}>

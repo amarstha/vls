@@ -26,20 +26,21 @@ class SignUp extends React.Component {
                                 </div>
                                 <h3 className="mb-4">Sign up</h3>
                                 <div className="input-group mb-3">
-                                    <input type="text" className="form-control" placeholder="Username"/>
-                                </div>
-                                <div className="input-group mb-3">
                                     <input type="email" className="form-control" placeholder="Email"/>
                                 </div>
                                 <div className="input-group mb-4">
                                     <input type="password" className="form-control" placeholder="password"/>
                                 </div>
-                                <div className="form-group text-left">
-                                    <div className="checkbox checkbox-fill d-inline">
-                                        <input type="checkbox" name="checkbox-fill-2" id="checkbox-fill-2"/>
-                                            <label htmlFor="checkbox-fill-2" className="cr">Send me the <a href={DEMO.BLANK_LINK}> Newsletter</a> weekly.</label>
+                                <div className="input-group mb-4">
+                                    <input type="password" className="form-control" placeholder="confirm password"/>
+                                </div>
+                                <div className="input-group mb-4">
+                                    <div style={{ width: "100%", display: "block"}}>
+                                        <label style={{ width: "25%", display: "inline-block", float: "left", clear: "left"}}><input type="checkbox" value="" className="mr-1"/>Teacher</label>
+                                        <label style={{ width: "45%", display: "inline-block", float: "right", clear: "right"}}><input type="checkbox" value="" className="mr-1"/>Student</label>
                                     </div>
                                 </div>
+                                
                                 <button className="btn btn-primary shadow-2 mb-4">Sign up</button>
                                 <p className="mb-0 text-muted">Allready have an account? <NavLink to="/auth/signin-1">Login</NavLink></p>
                             </div>

@@ -7,7 +7,7 @@ import '../../assets/scss/style.scss';
 const Home = () => {
   const mystyle = {
       backgroundImage:`url(${Book})`,
-      height: '100%',
+      height: '570px',
       width: '100%',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
@@ -18,53 +18,20 @@ const Home = () => {
       
       <Navbar />
       <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <div className="px-4 py-6 sm:px-0">
-              <h2>1,904 results for “django”</h2>
-              <div class="grid grid-cols-4 gap-4">
-                <div>
-                  <img src={thumb1} />
-                  <h4>Master Google Sheets (and see why it's better than Excel)</h4>
-                  <p>James Mares</p>
-                </div>
-                <div>
-                  <img src={thumb1} />
-                  <h4>Master Google Sheets (and see why it's better than Excel)</h4>
-                  <p>James Mares</p>
-                </div>
-                <div>
-                  <img src={thumb1} />
-                  <h4>Master Google Sheets (and see why it's better than Excel)</h4>
-                  <p>James Mares</p>
-                </div>
-                <div>
-                  <img src={thumb1} />
-                  <h4>Master Google Sheets (and see why it's better than Excel)</h4>
-                  <p>James Mares</p>
-                </div>
-                <div>
-                  <img src={thumb1} />
-                  <h4>Master Google Sheets (and see why it's better than Excel)</h4>
-                  <p>James Mares</p>
-                </div>
-                <div>
-                  <img src={thumb1} />
-                  <h4>Master Google Sheets (and see why it's better than Excel)</h4>
-                  <p>James Mares</p>
-                </div>
-                <div>
-                  <img src={thumb1} />
-                  <h4>Master Google Sheets (and see why it's better than Excel)</h4>
-                  <p>James Mares</p>
-                </div>
-                <div>
-                  <img src={thumb1} />
-                  <h4>Master Google Sheets (and see why it's better than Excel)</h4>
-                  <p>James Mares</p>
-                </div>
+          <div style={mystyle}></div>
+          <div className="px-4 sm:px-0">
+            <h2 className="py-10">1,904 results for “django”</h2>
+            <div className="grid grid-cols-4 gap-4">
+            
+              <div className="wrapper">
+                <img src={thumb1} />
+                <h5 className="text-base m-0 py-2">Master Google Sheets (and see why it's better than Excel)</h5>
+                <p className="m-0 pb-2">James Mares</p>
+                <h5 className="text-gray-900 font-medium">$11.99</h5>
               </div>
+
+            </div>
           </div>
-        </div>
       </main>
       <footer class='w-full text-center text-white font-bold border-t border-grey p-4 pin-b theme-bg2'>
             Copyright &copy; 2021 VlS. All rights reserved.

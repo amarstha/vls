@@ -1,8 +1,7 @@
 {
-  "name": "datta-able-rv18.0.4",
+  "name": " vls",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://lite.codedthemes.com/datta-able/react/default/",
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "autoprefixer": "^10.2.5",
