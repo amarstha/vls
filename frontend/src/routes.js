@@ -31,6 +31,7 @@ const UserEdit = React.lazy(() => import('./Demo/home/UserEdit'));
 const UserProfile = React.lazy(() => import('./Demo/home/User'));
 const Courses = React.lazy(() => import('./Demo/home/Courses'));
 const Course = React.lazy(() => import('./Demo/home/Course'));
+const CourseEdit = React.lazy(() => import('./Demo/home/EditCourse'));
 const Exams = React.lazy(() => import('./Demo/home/Exams'));
 const Exam = React.lazy(() => import('./Demo/home/Exam'));
 
@@ -42,6 +43,7 @@ const routes = [
     { path: '/user/:id', exact: true, name: 'UserProfile', component: UserProfile },
     { path: '/courses', exact: true, name: 'Courses', component: Courses },
     { path: '/course/:id', exact: true, name: 'Course', component: Course },
+    { path: '/course/edit/:id', exact: true, name: 'CourseEdit', component: CourseEdit },
     { path: '/exams', exact: true, name: 'Exams', component: Exams },
     { path: '/exam/:id', exact: true, name: 'Exam', component: Exam },
     { path: '/basic/button', exact: true, name: 'Basic Button', component: UIBasicButton },

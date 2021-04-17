@@ -5,6 +5,7 @@ from .serializers import CategorySerializer, LessonSerializer, LessonReadSeriali
 from rest_framework.decorators import action
 from django.core.mail import send_mail, EmailMultiAlternatives
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 
@@ -55,6 +56,7 @@ class LessonView(viewsets.ModelViewSet):
 class EnrollView(viewsets.ModelViewSet):
 	queryset = Enroll.objects.all()
 	serializer_class = EnrollSerializer
+	permission_classes=(IsAuthenticated, )
 
 
 	def perform_create(self, serializer):

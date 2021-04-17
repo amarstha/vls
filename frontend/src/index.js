@@ -8,15 +8,15 @@ import * as serviceWorker from './serviceWorker';
 
 // Auth Context
 import AuthContextProvider from "./contexts/Auth";
-
-
 import reducer from './store/reducer';
 import config from './config';
+import createBrowserHistory from 'history/createBrowserHistory';
 const store = createStore(reducer);
+const history = createBrowserHistory();
 
 const app = (
     <Provider store={store}>
-        <BrowserRouter basename={config.basename}>
+        <BrowserRouter basename={config.basename} history={history} >
             {/* basename="/datta-able" */}
             <AuthContextProvider>
             	<App />

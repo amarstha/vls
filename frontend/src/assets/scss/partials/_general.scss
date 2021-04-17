@@ -990,3 +990,31 @@ p.text-muted {
 .vls-question button svg {
   margin-right: 5px;
 }
+
+.searchimage {
+    height: 250px;
+    width: 250px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    box-shadow: 0 1px 40px 1px rgba(0,0,0,0.15);
+}
+
+.floatLeft {
+    width: 45%;
+    float: left;
+    clear: left;
+}
+
+.floatRight {
+    width: 45%;
+    float: right;
+    clear: right;
+}
+
+.vls-btnbtn {
+    display: block;
+    width: 15%;
+    float: left;
+    clear: left;
+}

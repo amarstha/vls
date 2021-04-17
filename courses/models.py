@@ -37,7 +37,7 @@ class Enroll(models.Model):
 		verbose_name_plural = 'enrolls'
 
 	def __str__(self):
-		return self.lesson
+		return self.user
 
 
 class Question(models.Model):
