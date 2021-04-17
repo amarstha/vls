@@ -897,4 +897,96 @@ p.text-muted {
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
 }
-/* material icon for material datetime picker */
+/* Swal CSS */
+
+.swal-text{
+    text-align: center;
+}
+
+.vls-question {
+  width: 500px;
+  min-height: 200px;
+  height: min-content;
+  border-radius: 15px;
+  padding: 20px 20px 30px 20px;
+  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+  margin: auto;
+  text-align: center;
+}
+
+.vls-question .score-section {
+  font-size: 24px;
+  align-items: center;
+  position: relative;
+  top: 55px;
+}
+
+/* QUESTION/TIMER/LEFT SECTION */
+.vls-question .question-section {
+  width: 100%;
+  position: relative;
+  color: #000;
+}
+
+
+.vls-question .question-count span {
+  font-size: 20px;
+}
+
+.vls-question .question-text {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.vls-question .timer-text {
+  background: rgb(230, 153, 12);
+  padding: 15px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 5px solid rgb(255, 189, 67);
+  border-radius: 15px;
+  text-align: center;
+}
+
+/* ANSWERS/RIGHT SECTION */
+.vls-question .answer-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vls-question button {
+  width: 100%;
+  font-size: 16px;
+  color: #000;
+  border-radius: 15px;
+  display: flex;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  border: 2px solid #234668;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.vls-question .correct {
+  background-color: #2f922f;
+}
+
+.vls-question .incorrect {
+  background-color: #ff3333;
+}
+
+.vls-question button:hover {
+  background-color: #3F4D67;
+  color: #fff;
+}
+
+.vls-question button:focus {
+  outline: none;
+}
+
+.vls-question button svg {
+  margin-right: 5px;
+}

@@ -25,9 +25,25 @@ const GoogleMap = React.lazy(() => import('./Demo/Maps/GoogleMap/index'));
 
 const OtherSamplePage = React.lazy(() => import('./Demo/Other/SamplePage'));
 const OtherDocs = React.lazy(() => import('./Demo/Other/Docs'));
+const Profile = React.lazy(() => import('./Demo/Dashboard/Profile'));
+const Users = React.lazy(() => import('./Demo/home/Users'));
+const UserEdit = React.lazy(() => import('./Demo/home/UserEdit'));
+const UserProfile = React.lazy(() => import('./Demo/home/User'));
+const Courses = React.lazy(() => import('./Demo/home/Courses'));
+const Course = React.lazy(() => import('./Demo/home/Course'));
+const Exams = React.lazy(() => import('./Demo/home/Exams'));
+const Exam = React.lazy(() => import('./Demo/home/Exam'));
 
 const routes = [
     { path: '/dashboard', exact: true, name: 'Dashboard', component: DashboardDefault },
+    { path: '/profile', exact: true, name: 'Profile', component: Profile },
+    { path: '/users', exact: true, name: 'Users', component: Users },
+    { path: '/user/edit/:id', exact: true, name: 'UserEdit', component: UserEdit },
+    { path: '/user/:id', exact: true, name: 'UserProfile', component: UserProfile },
+    { path: '/courses', exact: true, name: 'Courses', component: Courses },
+    { path: '/course/:id', exact: true, name: 'Course', component: Course },
+    { path: '/exams', exact: true, name: 'Exams', component: Exams },
+    { path: '/exam/:id', exact: true, name: 'Exam', component: Exam },
     { path: '/basic/button', exact: true, name: 'Basic Button', component: UIBasicButton },
     { path: '/basic/badges', exact: true, name: 'Basic Badges', component: UIBasicBadges },
     { path: '/basic/breadcrumb-paging', exact: true, name: 'Basic Breadcrumb Pagination', component: UIBasicBreadcrumbPagination },

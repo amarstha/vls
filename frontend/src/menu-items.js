@@ -18,17 +18,9 @@ export default {
                     id: 'users',
                     title: 'Users',
                     type: 'item',
-                    url: '/Users',
+                    url: '/users',
                     classes: 'nav-item',
                     icon: 'fa fa-users'
-                },
-                {
-                    id: 'exam',
-                    title: 'Exam',
-                    type: 'item',
-                    url: '/exam',
-                    classes: 'nav-item',
-                    icon: 'fa fa-graduation-cap'
                 },
                 {
                     id: 'exam',
@@ -37,7 +29,15 @@ export default {
                     url: '/courses',
                     classes: 'nav-item',
                     icon: 'fa fa-book'
-                }
+                },
+                {
+                    id: 'exam',
+                    title: 'Exams',
+                    type: 'item',
+                    url: '/exams',
+                    classes: 'nav-item',
+                    icon: 'fa fa-graduation-cap'
+                }     
             ]
         }
     ]
