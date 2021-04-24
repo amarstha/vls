@@ -8,7 +8,9 @@ import NavContent from './NavContent';
 import OutsideClick from './OutsideClick';
 import Aux from './../../../../hoc/_Aux'
 import * as actionTypes from './../../../../store/actions';
-import navigation from '../../../../menu-items';
+import navigation from './menu-admin';
+import navigationlearner from './menu-learner';
+import navigationtrainer from './menu-trainer';
 
 class Navigation extends Component {
 

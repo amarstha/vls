@@ -40,6 +40,8 @@ const SignIn = (props) => {
             })
             clearState()
             localStorage.setItem("jwt_token", results.data.token);
+            localStorage.setItem("admin", results.data.is_admin);
+            localStorage.setItem("trainer", results.data.is_staff);
             window.location.reload();
             setLoading(false)
         }catch(error){
