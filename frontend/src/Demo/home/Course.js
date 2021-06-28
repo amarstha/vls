@@ -1,22 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import {Row, Col, Card, Table, Tabs, Tab} from 'react-bootstrap';
+import { Row, Col, Card, Table, Tabs, Tab, Accordion } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Aux from "../../hoc/_Aux";
 import axios from 'axios';
 import ReactPlayer from 'react-player';
+import { getNotifications } from '../../api';
 
 function Course(props){
 
 	const[data, setData] = useState([])
+	const[notifications, setNotifications] = useState('')
 	const[loading, setLoading] = useState(false)
+	console.log(notifications)
 
     useEffect(() => {
     	setLoading(true)
 	    async function fetchMyAPI() {
 	      let results = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/lesson/${props.match.params.id}`)
 	      setData(results.data);
-	      console.log(results.data)
 	      setLoading(false)
+
+	      let params = {
+	      	course: props.match.params.id
+	      }
+	      let resp = await getNotifications(params);
+	      setNotifications(resp.data.results);
+
 	    }
 
 	    fetchMyAPI()
@@ -49,20 +58,20 @@ function Course(props){
 	                            	</a>
 	                            </Tab>
 	                            <Tab eventKey="notifications" title="Notifications">
-	                                <ul style={{  padding: 0, marginTop: '-30px'}}>
-	                                	<li style={{ display: "flex", alignItems: "center", lineHeight: '1px' }}>
-		                                	<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-											  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-											</svg>
-		                                	<p style={{ marginTop: "10px", paddingLeft: "10px"}}>This course has recent update . Please check now</p>
-	                                	</li>
-	                                	<li style={{ display: "flex", alignItems: "center", lineHeight: '1px' }}>
-		                                	<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-											  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-											</svg>
-		                                	<p style={{ marginTop: "10px", paddingLeft: "10px"}}>This course has recent update . Please check now</p>
-	                                	</li>
-	                                </ul>
+		                            <Accordion defaultActiveKey="1">
+	                            		{notifications && notifications.map((item,index) => (
+										  <Card key={item.id}>
+										    <Card.Header>
+										      <Accordion.Toggle  variant="link" eventKey={index+1}>
+										        <b>{item.title}</b>
+										      </Accordion.Toggle>
+										    </Card.Header>
+										    <Accordion.Collapse eventKey={index+1}>
+										      <Card.Body>{item.description}</Card.Body>
+										    </Accordion.Collapse>
+										  </Card>
+										))}
+									</Accordion>
 	                            </Tab>
 	                        </Tabs>
                         </Card.Body>

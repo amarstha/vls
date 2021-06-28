@@ -6,7 +6,7 @@ const AuthContextProvider = (props) => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('jwt_token') ? true : false);
 
-    const [loggedInUser, setLoggedInUser ] = useState(null);
+    const [loggedInUser, setLoggedInUser ] = useState('');
     useEffect(() => {
         (async()=>{
             if(isLoggedIn === true){

@@ -15,7 +15,7 @@ class Category(models.Model):
 class Lesson(models.Model):
 	category=models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
 	title=models.CharField(max_length=255)
-	description=models.CharField(max_length=1000)
+	description=models.CharField(max_length=9999)
 	thumbnail=models.ImageField(upload_to='lesson',blank=True,null=True)
 	video=models.FileField(upload_to='lesson_video',blank=True,null=True)
 	pdf=models.FileField(upload_to='lesson_pdf',blank=True,null=True)
@@ -28,6 +28,11 @@ class Lesson(models.Model):
 	def __str__(self):
 		return self.title
 
+class Notifications(models.Model):
+	title=models.CharField(max_length=255, null=True, blank=True)
+	description=models.TextField(max_length=9999, null=True, blank=True)
+	course=models.ForeignKey(Lesson, on_delete=models.SET_NULL, null=True)
+	created_date=models.DateTimeField(auto_now_add=True)
 
 class Enroll(models.Model):
 	lesson=models.ForeignKey(Lesson,on_delete=models.SET_NULL,null=True)
@@ -48,6 +53,8 @@ class Question(models.Model):
 	option_two = models.CharField(max_length=255)
 	option_three = models.CharField(max_length=255)
 	option_four = models.CharField(max_length=255)
+	created_date=models.DateTimeField(auto_now_add=True)
+	created_by=	created_by=models.CharField(max_length=255,null=True,blank=True)
 
 	class Meta:
 		verbose_name_plural = 'questions'

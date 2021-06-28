@@ -5,7 +5,7 @@ from rest_framework.decorators import action
 from rest_framework.exceptions import APIException
 from rest_framework.response import Response
 
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.urls import reverse
 import jwt
 
@@ -38,9 +38,9 @@ class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ['email']
-    search_fields = ['email']
-    ordering_fields = ['email']
+    filterset_fields = ['email','is_staff','is_admin']
+    search_fields = ['email','is_staff','is_admin']
+    ordering_fields = ['email','is_staff','is_admin']
     lookup_field = 'id'
 
     def get_serializer_class(self):
@@ -68,8 +68,11 @@ class UserView(viewsets.ModelViewSet):
         if self.action in ['create']:
             permissions_classes = [AllowAny]
 
-        elif self.action in ['list','destroy']:
+        elif self.action in ['destroy']:
             permissions_classes = [IsAdmin]
+
+        elif self.action in ['list']:
+            permissions_classes = [IsAuthenticated]
 
         elif self.action == 'retrieve':
             permissions_classes = [CanView]

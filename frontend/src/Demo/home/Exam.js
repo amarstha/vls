@@ -11,7 +11,10 @@ function Exam(props){
 	useEffect(() => {
     	setLoading(true)
 	    async function fetchMyAPI() {
-	      let results = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/question/${props.match.params.id}/enrolllessonquestions/`)
+	    	const params = {
+	    		lesson__id:props.match.params.id
+	    	}
+	      let results = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/question/`, {params})
 	      setQuestions(results.data.results);
 	      setLoading(false)
 	    }
@@ -41,7 +44,7 @@ function Exam(props){
                 <Col>
                 	<Card style={{ marginTop: '-30px' }}>
                 		<Card.Header style={{textAlign: 'center'}}>
-                            <Card.Title as="h5">Exam 1</Card.Title>
+                            <Card.Title as="h5">Exam Questions</Card.Title>
                         </Card.Header>
                         <Card.Body style={{ marginBottom: '45px'}}>
                         	<div className='vls-question'>

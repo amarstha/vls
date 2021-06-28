@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import {Row, Col, Card, Table} from 'react-bootstrap';
+import AddCourseCategory from './AddCourseCategory';
 import Aux from "../../hoc/_Aux";
 import { AuthContext } from '../../contexts/Auth';
 import AdminCoursesList from './AdminCoursesList';
@@ -8,16 +9,26 @@ import LearnerCoursesList from './LearnerCoursesList';
 
 function Courses(){
 
-	const { loggedInUser } = useContext(AuthContext)
+	const { loggedInUser } = useContext(AuthContext);
 
     return (
+    	<>
         <Aux>
             <Row>
                 <Col>
                 	<Card style={{ marginTop: '-30px' }}>
 
                 		<Card.Header>
-                            <Card.Title as="h5">Courses</Card.Title>
+                			<Row>
+	                			<Col md={10}>
+	                            	<Card.Title as="h5">Courses</Card.Title>
+	                            </Col>
+	                            {loggedInUser && loggedInUser.is_admin && (
+		                            <Col md={2}>
+		                            	<AddCourseCategory />
+		                            </Col>
+	                            )}
+                            </Row>
                         </Card.Header>
 
                         <Card.Body>
@@ -28,6 +39,7 @@ function Courses(){
 	                                    <th>Title</th>
 	                                    <th>Category</th>
 	                                    <th>Created By</th>
+	                                    <th>Created Date</th>
 	                                    <th>Action</th>
 	                                </tr>
 	                            </thead>
@@ -47,6 +59,7 @@ function Courses(){
                 </Col>
             </Row>
         </Aux>
+        </>
     );
     
 }

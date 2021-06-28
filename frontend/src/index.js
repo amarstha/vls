@@ -5,9 +5,11 @@ import {Provider} from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 import App from './App/index';
 import * as serviceWorker from './serviceWorker';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Auth Context
 import AuthContextProvider from "./contexts/Auth";
+import UserDataContext from "./contexts/UserData";
 import reducer from './store/reducer';
 import config from './config';
 import createBrowserHistory from 'history/createBrowserHistory';
@@ -19,7 +21,9 @@ const app = (
         <BrowserRouter basename={config.basename} history={history} >
             {/* basename="/datta-able" */}
             <AuthContextProvider>
-            	<App />
+            	<UserDataContext>
+            		<App />
+            	</UserDataContext>
             </AuthContextProvider>
         </BrowserRouter>
     </Provider>

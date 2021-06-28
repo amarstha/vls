@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django_extensions',
     
 ]
-
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',

@@ -8,7 +8,7 @@ import LearnerExamsList from './LearnerExamsList';
 
 function Exams(){
 
-	const { loggedInUser } = useContext(AuthContext)
+	const { loggedInUser } = useContext(AuthContext);
 
     return (
         <Aux>

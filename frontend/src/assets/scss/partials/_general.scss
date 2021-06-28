@@ -1018,3 +1018,10 @@ p.text-muted {
     float: left;
     clear: left;
 }
+.vls-imgalignment{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}

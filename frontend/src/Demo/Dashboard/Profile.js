@@ -1,6 +1,6 @@
 import React,{ useContext, useEffect } from 'react';
 import {Row, Col, Card, Table} from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 
 import Aux from "../../hoc/_Aux";
 import { AuthContext } from "../../contexts/Auth";
@@ -17,9 +17,15 @@ const Profile = (props) => {
             <Row>
                 <Col>
                     <Card style={{ marginTop: '-30px' }}>
-                        <Card.Header style={{textAlign: 'center'}}>
-                            <Card.Title as="h5">My Profile</Card.Title>
-                            {/*<button className="label theme-bg text-white f-12">Edit</button>*/}
+                        <Card.Header>
+                            <Row>
+                                <Col md={10}>
+                                    <Card.Title as="h5">My Profile</Card.Title>
+                                </Col>
+                                <Col md={2}>
+                                    <Link to={`/user/edit/${loggedInUser.id}`}><button className="label theme-bg2 text-white f-14">Edit</button></Link>
+                                </Col>
+                            </Row>
                         </Card.Header>
                         <Card.Body style={{textAlign: 'center'}}>
                         	<button type="button" style={{ margin: '-20px auto 20px' }} className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-expanded="false" aria-haspopup="true">

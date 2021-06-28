@@ -28,8 +28,16 @@ export default {
                     type: 'item',
                     url: '/courses',
                     classes: 'nav-item',
-                    icon: 'fa fa-book'
+                    icon: 'fa fa-star'
                 },
+                {
+                    id: 'questions',
+                    title: 'Questions',
+                    type: 'item',
+                    url: '/questions',
+                    classes: 'nav-item',
+                    icon: 'fa fa-book'
+                },       
                 {
                     id: 'exam',
                     title: 'Exams',
@@ -37,7 +45,7 @@ export default {
                     url: '/exams',
                     classes: 'nav-item',
                     icon: 'fa fa-graduation-cap'
-                }     
+                }
             ]
         }
     ]

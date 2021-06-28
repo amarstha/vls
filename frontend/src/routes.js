@@ -26,6 +26,7 @@ const GoogleMap = React.lazy(() => import('./Demo/Maps/GoogleMap/index'));
 const OtherSamplePage = React.lazy(() => import('./Demo/Other/SamplePage'));
 const OtherDocs = React.lazy(() => import('./Demo/Other/Docs'));
 const Profile = React.lazy(() => import('./Demo/Dashboard/Profile'));
+const ChangePassword = React.lazy(() => import('./Demo/Authentication/SignIn/ChangePassword'));
 const Users = React.lazy(() => import('./Demo/home/Users'));
 const UserEdit = React.lazy(() => import('./Demo/home/UserEdit'));
 const UserProfile = React.lazy(() => import('./Demo/home/User'));
@@ -34,10 +35,14 @@ const Course = React.lazy(() => import('./Demo/home/Course'));
 const CourseEdit = React.lazy(() => import('./Demo/home/EditCourse'));
 const Exams = React.lazy(() => import('./Demo/home/Exams'));
 const Exam = React.lazy(() => import('./Demo/home/Exam'));
+const ExamQuestions = React.lazy(() => import('./Demo/home/ExamQuestions'));
+const ExamQuestion = React.lazy(() => import('./Demo/home/ExamQuestion'));
+const ExamEditQuestion = React.lazy(() => import('./Demo/home/ExamEditQuestion'));
 
 const routes = [
     { path: '/dashboard', exact: true, name: 'Dashboard', component: DashboardDefault },
     { path: '/profile', exact: true, name: 'Profile', component: Profile },
+    { path: '/change-password', exact: true, name: 'ChangePassword', component: ChangePassword },
     { path: '/users', exact: true, name: 'Users', component: Users },
     { path: '/user/edit/:id', exact: true, name: 'UserEdit', component: UserEdit },
     { path: '/user/:id', exact: true, name: 'UserProfile', component: UserProfile },
@@ -46,6 +51,9 @@ const routes = [
     { path: '/course/edit/:id', exact: true, name: 'CourseEdit', component: CourseEdit },
     { path: '/exams', exact: true, name: 'Exams', component: Exams },
     { path: '/exam/:id', exact: true, name: 'Exam', component: Exam },
+    { path: '/questions', exact: true, name: 'Questions', component: ExamQuestions },
+    { path: '/question/:id', exact: true, name: 'Question', component: ExamQuestion },
+    { path: '/question/edit/:id', exact: true, name: 'EditQuestion', component: ExamEditQuestion },
     { path: '/basic/button', exact: true, name: 'Basic Button', component: UIBasicButton },
     { path: '/basic/badges', exact: true, name: 'Basic Badges', component: UIBasicBadges },
     { path: '/basic/breadcrumb-paging', exact: true, name: 'Basic Breadcrumb Pagination', component: UIBasicBreadcrumbPagination },

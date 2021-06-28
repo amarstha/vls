@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets,status
-from .models import Category, Lesson, Enroll, Question
-from .serializers import CategorySerializer, LessonSerializer, LessonReadSerializer, EnrollSerializer, QuestionSerializer
+from .models import Category, Lesson, Enroll, Question, Notifications
+from .serializers import CategorySerializer, LessonSerializer, LessonReadSerializer, EnrollSerializer, QuestionSerializer, QuestionReadOnlySerializer, NotificationsSerializer
 from rest_framework.decorators import action
 from django.core.mail import send_mail, EmailMultiAlternatives
 from rest_framework.response import Response
@@ -19,12 +19,10 @@ class CategoryView(viewsets.ModelViewSet):
 
 class LessonView(viewsets.ModelViewSet):
 	queryset = Lesson.objects.all()
-	serializer_class = LessonSerializer
 	filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
 	filterset_fields = ['title', 'description','category__title']
 	search_fields = ['title', 'description','category__title']
 	ordering_fields = ['title', 'description','category__title']
-	lookup_field = 'id'
 
 	def get_serializer_class(self):
 
@@ -51,6 +49,14 @@ class LessonView(viewsets.ModelViewSet):
 		page=self.paginate_queryset(queryset)
 		serializers=LessonSerializer(page, many=True)
 		return self.get_paginated_response(serializers.data)
+
+class NotificationsView(viewsets.ModelViewSet):
+	queryset = Notifications.objects.all()
+	serializer_class = NotificationsSerializer
+	filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+	filterset_fields = ['title', 'description','course','course__id']
+	search_fields = ['title', 'description','course','course__id']
+	ordering_fields = ['title', 'description','course','course__id']
 
 
 class EnrollView(viewsets.ModelViewSet):
@@ -88,7 +94,29 @@ class EnrollView(viewsets.ModelViewSet):
 
 class QuestionView(viewsets.ModelViewSet):
 	queryset = Question.objects.all()
-	serializer_class = QuestionSerializer
+	filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+	filterset_fields = ['answer','lesson__id']
+	search_fields = ['answer','lesson__id']
+	ordering_fields = ['answer','lesson__id']
+
+	def get_serializer_class(self):
+
+		if self.request.method == 'LIST':
+			return QuestionReadOnlySerializer
+
+		if self.request.method == 'retrieve': 
+			return QuestionReadOnlySerializer
+
+		if self.request.method == 'POST':
+			return QuestionSerializer
+
+		if self.request.method == 'PUT':
+			return QuestionSerializer
+
+		return QuestionReadOnlySerializer
+
+	def perform_create(self, serializer):
+		serializer.save(created_by=self.request.user)
 
 	@action(methods=['get'], detail=True)
 	def enrolllessonquestions(self, request, pk):

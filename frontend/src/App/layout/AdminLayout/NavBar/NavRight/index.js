@@ -97,11 +97,11 @@ function NavRight(props){
                             <i className="icon feather icon-settings"/>
                         </Dropdown.Toggle>
                         <Dropdown.Menu alignRight className="profile-notification">
-                            <div className="pro-head">
+                            <div className="pro-head" style={{ display:'flex', justifyContent: 'center', alignItems: 'center' }}>
                                 {loggedInUser && loggedInUser.image === null ? (
-                                    <img src={logo} className="img-radius" alt="User Profile"/>
+                                    <img src={logo} className="img-radius" alt="User Profile" style={{ height:'50px', width:'50px' }} />
                                 ): (
-                                    <img src={`http://127.0.0.1:8000${loggedInUser.image}`} className="img-radius" alt="User Profile"/>
+                                    <img src={`http://127.0.0.1:8000${loggedInUser.image}`} className="img-radius" alt="User Profile" style={{ height:'50px', width:'50px' }}/>
                                 )}
                                 <span>{loggedInUser && loggedInUser.name}</span>
                             </div>
