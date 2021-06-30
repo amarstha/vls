@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {NavLink} from 'react-router-dom';
-
+import {Link,NavLink} from 'react-router-dom';
+import Logo from '../../../assets/images/logo.png';
 import './../../../assets/scss/style.scss';
 import Aux from "../../../hoc/_Aux";
 import Breadcrumb from "../../../App/layout/AdminLayout/Breadcrumb";
@@ -58,7 +58,7 @@ const VerifyEmail = (props) => {
                         <div className="card">
                             <div className="card-body text-center">
                                 <div className="mb-4">
-                                    <i className="feather icon-user-plus auth-icon"/>
+                                    <Link to="/"><img src={Logo} width="100px" height="100px" style={{ margin: 'auto' }}/></Link>
                                 </div>
                                 <button className="btn btn-primary shadow-2 mb-4" onClick={handleClick}>Verify your email
                                     {loading && (

@@ -10,8 +10,7 @@ function Course(props){
 
 	const[data, setData] = useState([])
 	const[notifications, setNotifications] = useState('')
-	const[loading, setLoading] = useState(false)
-	console.log(notifications)
+	const[loading, setLoading] = useState(false);
 
     useEffect(() => {
     	setLoading(true)

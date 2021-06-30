@@ -8,6 +8,9 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
+from accounts.serializers import UserSerializer
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 class CategoryView(viewsets.ModelViewSet):
 	queryset = Category.objects.all()
@@ -47,7 +50,7 @@ class LessonView(viewsets.ModelViewSet):
 	def trainerlessons(self, request, *args, **kwargs):
 		queryset=Lesson.objects.filter(created_by=self.request.user)
 		page=self.paginate_queryset(queryset)
-		serializers=LessonSerializer(page, many=True)
+		serializers=LessonReadSerializer(page, many=True)
 		return self.get_paginated_response(serializers.data)
 
 class NotificationsView(viewsets.ModelViewSet):
@@ -66,7 +69,8 @@ class EnrollView(viewsets.ModelViewSet):
 
 
 	def perform_create(self, serializer):
-		serializer.save(user=self.request.user)
+		user = self.request.user
+		serializer.save(user=user)
 		user_email=serializer.data.get('user')
 
 		subject, from_email, to = 'Course Enrollment Confirmation', 'no-reply@vls.com', user_email
@@ -88,7 +92,15 @@ class EnrollView(viewsets.ModelViewSet):
 		queryset=Enroll.objects.filter(user=self.request.user).values_list('lesson',flat=True)
 		lessons=Lesson.objects.filter(id__in=queryset)
 		page=self.paginate_queryset(lessons)
-		serializers=LessonSerializer(page, many=True)
+		serializers=LessonReadSerializer(page, many=True)
+		return self.get_paginated_response(serializers.data)
+
+	@action(methods=['get'], detail=False)
+	def enrollusers(self, request, *args, **kwargs):
+		queryset=Enroll.objects.filter(lesson__created_by=self.request.user).values_list('user',flat=True)
+		users=User.objects.filter(email__in=queryset)
+		page=self.paginate_queryset(users)
+		serializers=UserSerializer(page, many=True)
 		return self.get_paginated_response(serializers.data)
 
 
@@ -124,4 +136,12 @@ class QuestionView(viewsets.ModelViewSet):
 		questions=Question.objects.filter(lesson__in=queryset)
 		page=self.paginate_queryset(questions)
 		serializers=QuestionSerializer(page, many=True)
+		return self.get_paginated_response(serializers.data)
+
+
+	@action(methods=['get'], detail=False)
+	def trainerlessonquestions(self, request):
+		queryset=Question.objects.filter(created_by=self.request.user)
+		page=self.paginate_queryset(queryset)
+		serializers=QuestionReadOnlySerializer(page, many=True)
 		return self.get_paginated_response(serializers.data)

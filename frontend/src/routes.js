@@ -38,6 +38,7 @@ const Exam = React.lazy(() => import('./Demo/home/Exam'));
 const ExamQuestions = React.lazy(() => import('./Demo/home/ExamQuestions'));
 const ExamQuestion = React.lazy(() => import('./Demo/home/ExamQuestion'));
 const ExamEditQuestion = React.lazy(() => import('./Demo/home/ExamEditQuestion'));
+const EnrollLearners = React.lazy(() => import('./Demo/home/EnrollLearners'));
 
 const routes = [
     { path: '/dashboard', exact: true, name: 'Dashboard', component: DashboardDefault },
@@ -54,18 +55,7 @@ const routes = [
     { path: '/questions', exact: true, name: 'Questions', component: ExamQuestions },
     { path: '/question/:id', exact: true, name: 'Question', component: ExamQuestion },
     { path: '/question/edit/:id', exact: true, name: 'EditQuestion', component: ExamEditQuestion },
-    { path: '/basic/button', exact: true, name: 'Basic Button', component: UIBasicButton },
-    { path: '/basic/badges', exact: true, name: 'Basic Badges', component: UIBasicBadges },
-    { path: '/basic/breadcrumb-paging', exact: true, name: 'Basic Breadcrumb Pagination', component: UIBasicBreadcrumbPagination },
-    { path: '/basic/collapse', exact: true, name: 'Basic Collapse', component: UIBasicCollapse },
-    { path: '/basic/tabs-pills', exact: true, name: 'Basic Tabs & Pills', component: UIBasicTabsPills },
-    { path: '/basic/typography', exact: true, name: 'Basic Typography', component: UIBasicBasicTypography },
-    { path: '/forms/form-basic', exact: true, name: 'Forms Elements', component: FormsElements },
-    { path: '/tables/bootstrap', exact: true, name: 'Bootstrap Table', component: BootstrapTable },
-    { path: '/charts/nvd3', exact: true, name: 'Nvd3 Chart', component: Nvd3Chart },
-    { path: '/maps/google-map', exact: true, name: 'Google Map', component: GoogleMap },
-    { path: '/sample-page', exact: true, name: 'Sample Page', component: OtherSamplePage },
-    { path: '/docs', exact: true, name: 'Documentation', component: OtherDocs },
+    { path: '/learners', exact: true, name: 'EnrollLearners', component: EnrollLearners },
 ];
 
 export default routes;

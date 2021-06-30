@@ -1,5 +1,20 @@
 import axios from "axios";
 
+
+function changePassword(Id, formData) {
+  const token = localStorage.getItem("jwt_token");
+  const axiosConfig = {
+    headers: {
+      Authorization: `Token ${token}`
+    }
+  };
+  return axios.patch(
+    `${process.env.REACT_APP_API_BASE_URL}/api/change-password/${Id}/`,
+    formData,
+    axiosConfig
+  );
+}
+
 function getTotalUsers(params) {
   const token = localStorage.getItem("jwt_token");
   const axiosConfig = {
@@ -69,20 +84,42 @@ function deleteUser(Id) {
   );
 }
 
-function getTotalLearners() {
+function getTotalLearners(params) {
   const token = localStorage.getItem("jwt_token");
   const axiosConfig = {
     headers: {
       Authorization: `Token ${token}`
     },
-    params: {
-    	is_staff: false,
-    	is_active:true,
-    	is_admin: false
-    }
+    params: params
   };
   return axios.get(
     `${process.env.REACT_APP_API_BASE_URL}/api/users/`,
+    axiosConfig
+  );
+}
+
+function getEnrollLearners() {
+  const token = localStorage.getItem("jwt_token");
+  const axiosConfig = {
+    headers: {
+      Authorization: `Token ${token}`
+    }
+  };
+  return axios.get(
+    `${process.env.REACT_APP_API_BASE_URL}/api/enroll/enrollusers/`,
+    axiosConfig
+  );
+}
+
+function getLearnerCourses() {
+  const token = localStorage.getItem("jwt_token");
+  const axiosConfig = {
+    headers: {
+      Authorization: `Token ${token}`
+    }
+  };
+  return axios.get(
+    `${process.env.REACT_APP_API_BASE_URL}/api/enroll/enrolllessons/`,
     axiosConfig
   );
 }
@@ -154,6 +191,34 @@ function getTotalCourses() {
   };
   return axios.get(
     `${process.env.REACT_APP_API_BASE_URL}/api/lesson/`,
+    axiosConfig
+  );
+}
+
+function postCourse(formData) {
+  const token = localStorage.getItem("jwt_token");
+  const axiosConfig = {
+    headers: {
+      Authorization: `Token ${token}`
+    }
+  };
+  return axios.post(
+    `${process.env.REACT_APP_API_BASE_URL}/api/lesson/`,
+    formData,
+    axiosConfig
+  );
+}
+
+function getTrainerCourses(params) {
+  const token = localStorage.getItem("jwt_token");
+  const axiosConfig = {
+    headers: {
+      Authorization: `Token ${token}`
+    },
+    params: params
+  };
+  return axios.get(
+    `${process.env.REACT_APP_API_BASE_URL}/api/lesson/trainerlessons/`,
     axiosConfig
   );
 }
@@ -230,6 +295,20 @@ function listQuestions(params) {
   );
 }
 
+function listTrainerQuestions(params) {
+  const token = localStorage.getItem("jwt_token");
+  const axiosConfig = {
+    headers: {
+      Authorization: `Token ${token}`
+    },
+    params: params
+  };
+  return axios.get(
+    `${process.env.REACT_APP_API_BASE_URL}/api/question/trainerlessonquestions/`,
+    axiosConfig
+  );
+}
+
 function retrieveQuestion(Id) {
   const token = localStorage.getItem("jwt_token");
   const axiosConfig = {
@@ -286,6 +365,7 @@ function deleteQuestion(Id) {
 }
 
 export {
+  changePassword,
   getTotalUsers,
   getUser,
   updateUser,
@@ -296,14 +376,19 @@ export {
   getTotalCourses,
   retrieveCourse,
   getTotalCoursesForDashboard,
+  getTrainerCourses,
   getCourseCategory,
   PostCourseCategory,
   deleteCourseCategory,
   getNotifications,
   postNotifications,
   listQuestions,
+  listTrainerQuestions,
   PostQuestions,
   deleteQuestion,
   retrieveQuestion,
-  updateQuestion
+  updateQuestion,
+  getEnrollLearners,
+  getLearnerCourses,
+  postCourse
 };

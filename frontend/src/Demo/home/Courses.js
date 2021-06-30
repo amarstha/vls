@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import {Row, Col, Card, Table} from 'react-bootstrap';
 import AddCourseCategory from './AddCourseCategory';
+import AddCourse from './AddCourse';
 import Aux from "../../hoc/_Aux";
 import { AuthContext } from '../../contexts/Auth';
 import AdminCoursesList from './AdminCoursesList';
@@ -26,6 +27,11 @@ function Courses(){
 	                            {loggedInUser && loggedInUser.is_admin && (
 		                            <Col md={2}>
 		                            	<AddCourseCategory />
+		                            </Col>
+	                            )}
+	                            {loggedInUser && !loggedInUser.is_admin && loggedInUser.is_staff && (
+		                            <Col md={2}>
+		                            	<AddCourse />
 		                            </Col>
 	                            )}
                             </Row>

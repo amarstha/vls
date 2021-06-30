@@ -108,6 +108,7 @@ function NavRight(props){
                             <ul className="pro-body">
                                 <li><a href="/" className="dropdown-item"><i className="feather icon-home"/> Home</a></li>
                                 <li><a href="/profile" className="dropdown-item"><i className="feather icon-user"/> Profile</a></li>
+                                <li><a href="/change-password" className="dropdown-item"><i className="feather icon-anchor"/> Change Password</a></li>
                                 <li><a href="" onClick={handleClick} className="dropdown-item"><i className="feather icon-lock"/> Logout</a></li>
                             </ul>
                         </Dropdown.Menu>

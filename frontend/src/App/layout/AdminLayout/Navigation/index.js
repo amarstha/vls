@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useContext, useEffect } from 'react';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import windowSize from 'react-window-size';
@@ -11,95 +11,93 @@ import * as actionTypes from './../../../../store/actions';
 import navigation from './menu-admin';
 import navigationlearner from './menu-learner';
 import navigationtrainer from './menu-trainer';
+import { AuthContext } from '../../../../contexts/Auth';
 
-class Navigation extends Component {
+function Navigation(props){
 
-    resize = () => {
+    let { loggedInUser } = useContext(AuthContext);
+    const resize = () => {
         const contentWidth = document.getElementById('root').clientWidth;
 
-        if (this.props.layout === 'horizontal' && contentWidth < 992) {
-            this.props.onChangeLayout('vertical');
+        if (props.layout === 'horizontal' && contentWidth < 992) {
+            props.onChangeLayout('vertical');
         }
     };
 
-    componentDidMount() {
-        this.resize();
-        window.addEventListener('resize', this.resize)
-    }
+    useEffect(()=>{
+        resize();
+        window.addEventListener('resize', resize)
+    })
 
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.resize)
-    }
-
-    render() {
+    
         let navClass = [
             'pcoded-navbar',
         ];
 
-        if (this.props.preLayout !== null && this.props.preLayout !== '' && this.props.preLayout !== 'layout-6' && this.props.preLayout !== 'layout-8') {
-            navClass = [...navClass, this.props.preLayout];
+        if (props.preLayout !== null && props.preLayout !== '' && props.preLayout !== 'layout-6' && props.preLayout !== 'layout-8') {
+            navClass = [...navClass, props.preLayout];
         } else {
             navClass = [
                 ...navClass,
-                this.props.layoutType,
-                this.props.navBackColor,
-                this.props.navBrandColor,
-                'drp-icon-'+this.props.navDropdownIcon,
-                'menu-item-icon-'+this.props.navListIcon,
-                this.props.navActiveListColor,
-                this.props.navListTitleColor,
+                props.layoutType,
+                props.navBackColor,
+                props.navBrandColor,
+                'drp-icon-'+props.navDropdownIcon,
+                'menu-item-icon-'+props.navListIcon,
+                props.navActiveListColor,
+                props.navListTitleColor,
             ];
 
-            if (this.props.layout === 'horizontal') {
+            if (props.layout === 'horizontal') {
                 navClass = [...navClass, 'theme-horizontal'];
             }
 
-            if (this.props.navBackImage) {
-                navClass = [...navClass, this.props.navBackImage];
+            if (props.navBackImage) {
+                navClass = [...navClass, props.navBackImage];
             }
 
-            if (this.props.navIconColor) {
+            if (props.navIconColor) {
                 navClass = [...navClass, 'icon-colored'];
             }
 
-            if (!this.props.navFixedLayout) {
+            if (!props.navFixedLayout) {
                 navClass = [...navClass, 'menupos-static'];
             }
 
-            if (this.props.navListTitleHide) {
+            if (props.navListTitleHide) {
                 navClass = [...navClass, 'caption-hide'];
             }
         }
 
-        if (this.props.windowWidth < 992 && this.props.collapseMenu) {
+        if (props.windowWidth < 992 && props.collapseMenu) {
             navClass = [...navClass, 'mob-open'];
-        } else if (this.props.collapseMenu) {
+        } else if (props.collapseMenu) {
             navClass = [...navClass, 'navbar-collapsed'];
         }
 
-        if (this.props.preLayout === 'layout-6') {
+        if (props.preLayout === 'layout-6') {
             document.body.classList.add('layout-6');
-            document.body.style.backgroundImage = this.props.layout6Background;
-            document.body.style.backgroundSize = this.props.layout6BackSize;
+            document.body.style.backgroundImage = props.layout6Background;
+            document.body.style.backgroundSize = props.layout6BackSize;
         }
 
-        if (this.props.preLayout === 'layout-8') {
+        if (props.preLayout === 'layout-8') {
             document.body.classList.add('layout-8');
         }
 
-        if (this.props.layoutType === 'dark') {
+        if (props.layoutType === 'dark') {
             document.body.classList.add('datta-dark');
         } else {
             document.body.classList.remove('datta-dark');
         }
 
-        if (this.props.rtlLayout) {
+        if (props.rtlLayout) {
             document.body.classList.add('datta-rtl');
         } else {
             document.body.classList.remove('datta-rtl');
         }
 
-        if (this.props.boxLayout) {
+        if (props.boxLayout) {
             document.body.classList.add('container');
             document.body.classList.add('box-layout');
         } else {
@@ -109,15 +107,24 @@ class Navigation extends Component {
 
         let navContent = (
             <div className="navbar-wrapper">
-                <NavLogo collapseMenu={this.props.collapseMenu} windowWidth={this.props.windowWidth} onToggleNavigation={this.props.onToggleNavigation} />
-                <NavContent navigation={navigation.items} />
+                <NavLogo collapseMenu={props.collapseMenu} windowWidth={props.windowWidth} onToggleNavigation={props.onToggleNavigation} />
+                    {loggedInUser && loggedInUser.is_admin && (
+                        <NavContent navigation={navigation.items} />
+                    )}
+                    {loggedInUser && !loggedInUser.is_admin && loggedInUser.is_staff && (
+                        <NavContent navigation={navigationtrainer.items} />
+                    )}
+                    {loggedInUser && !loggedInUser.is_admin && !loggedInUser.is_staff && (
+                        <NavContent navigation={navigationlearner.items} />
+                    )}
             </div>
+
         );
-        if (this.props.windowWidth < 992) {
+        if (props.windowWidth < 992) {
             navContent = (
                 <OutsideClick>
                     <div className="navbar-wrapper">
-                        <NavLogo collapseMenu={this.props.collapseMenu} windowWidth={this.props.windowWidth} onToggleNavigation={this.props.onToggleNavigation} />
+                        <NavLogo collapseMenu={props.collapseMenu} windowWidth={props.windowWidth} onToggleNavigation={props.onToggleNavigation} />
                         <NavContent navigation={navigation.items} />
                     </div>
                 </OutsideClick>
@@ -131,7 +138,6 @@ class Navigation extends Component {
                 </nav>
             </Aux>
         );
-    }
 }
 
 const mapStateToProps = state => {

@@ -1,6 +1,6 @@
 import React, { useState,useEffect,useContext } from 'react'
-import {NavLink} from 'react-router-dom';
-
+import {Link,NavLink} from 'react-router-dom';
+import Logo from '../../../assets/images/logo.png';
 import './../../../assets/scss/style.scss';
 import Aux from "../../../hoc/_Aux";
 import Breadcrumb from "../../../App/layout/AdminLayout/Breadcrumb";
@@ -73,7 +73,7 @@ const SignIn = (props) => {
                         <div className="card">
                             <div className="card-body text-center">
                                 <div className="mb-4">
-                                    <i className="feather icon-unlock auth-icon"/>
+                                    <Link to="/"><img src={Logo} width="100px" height="100px" style={{ margin: 'auto' }}/></Link>
                                 </div>
                                 <h3 className="mb-4">Login</h3>
                                 <form onSubmit={handleSubmit}>

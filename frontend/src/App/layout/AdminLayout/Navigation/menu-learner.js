@@ -15,14 +15,6 @@ export default {
                     icon: 'fa fa-home'
                 },
                 {
-                    id: 'users',
-                    title: 'Users',
-                    type: 'item',
-                    url: '/users',
-                    classes: 'nav-item',
-                    icon: 'fa fa-users'
-                },
-                {
                     id: 'exam',
                     title: 'Courses',
                     type: 'item',

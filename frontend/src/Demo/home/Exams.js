@@ -3,7 +3,6 @@ import {Row, Col, Card, Table} from 'react-bootstrap';
 import Aux from "../../hoc/_Aux";
 import { AuthContext } from '../../contexts/Auth';
 import AdminExamsList from './AdminExamsList';
-import TrainerExamsList from './TrainerExamsList';
 import LearnerExamsList from './LearnerExamsList';
 
 function Exams(){
@@ -33,9 +32,6 @@ function Exams(){
 
 	                            {loggedInUser && loggedInUser.is_admin && (
 	                            	<AdminExamsList />
-	                            )}
-	                            {loggedInUser && !loggedInUser.is_admin && loggedInUser.is_staff &&(
-	                            	<TrainerExamsList />
 	                            )}
 	                            {loggedInUser && !loggedInUser.is_admin && !loggedInUser.is_staff && (
 	                            	<LearnerExamsList />

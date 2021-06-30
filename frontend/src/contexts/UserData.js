@@ -1,15 +1,18 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { getTotalLearners,getTotalTrainers,getTotalCourses,getTotalUsers,getTotalUsersforDashboard,getTotalCoursesForDashboard } from '../api';
+import { getTotalLearners,getTotalTrainers,getTotalCourses,getTotalUsers,getTotalUsersforDashboard,getTotalCoursesForDashboard,getEnrollLearners,getLearnerCourses,getTrainerCourses } from '../api';
 export const UserDataContext = createContext();
 
 function UserData(props){
 
 	const [totalUsers, setTotalUsers ] = useState('');
 	const [totalUsersForDashboard, setTotalUsersForDashboard ] = useState('');
-	const [totalLearners, setTotalLearners ] = useState('');
+    const [totalLearners, setTotalLearners ] = useState('');
+	const [totalEnrollLearners, setEnrollTotalLearners ] = useState('');
 	const [totalTrainers, setTotalTrainers ] = useState('');
 	const [totalCourses, setTotalCourses ] = useState('');
     const [totalCoursesForDashboard, setTotalCoursesForDashboard ] = useState('');
+    const [totalLearnerCoursesForDashboard, settotalLearnerCoursesForDashboard ] = useState('');
+    const [totalTrainerCoursesForDashboard, settotalTrainerCoursesForDashboard ] = useState('');
 	const [isDataManipulated, setIsDataManipulated ] = useState(true);
 
     const [page, setPage] = useState(1);
@@ -22,9 +25,17 @@ function UserData(props){
                 limit: perPage,
                 offset: (page - 1) * perPage,
             };
+            const params1 = {
+                is_staff: false,
+                is_active:true,
+            };
 
-            const learnersResp = await getTotalLearners();
+            const learnersResp = await getTotalLearners(params1);
+            console.log(learnersResp)
             setTotalLearners(learnersResp.data);
+
+            const enrollLearnersResp = await getEnrollLearners();
+            setEnrollTotalLearners(enrollLearnersResp.data);
 
             const trainersResp = await getTotalTrainers();
             setTotalTrainers(trainersResp.data);
@@ -41,6 +52,12 @@ function UserData(props){
             
             const coursesDashboardResp = await getTotalCoursesForDashboard();
             setTotalCoursesForDashboard(coursesDashboardResp.data);
+
+            const learnerCoursesDashboardResp = await getLearnerCourses();
+            settotalLearnerCoursesForDashboard(learnerCoursesDashboardResp.data);
+
+            const trainerCoursesDashboardResp = await getTrainerCourses();
+            settotalTrainerCoursesForDashboard(trainerCoursesDashboardResp.data);
             
             setIsDataManipulated(false);
         }
@@ -62,7 +79,7 @@ function UserData(props){
     }
 
 	return(
-		<UserDataContext.Provider value={{ page,totalPage,onPageChange,totalLearners,totalTrainers,totalCourses,totalUsers,totalUsersForDashboard,totalCoursesForDashboard,setIsDataManipulated }}>
+		<UserDataContext.Provider value={{ page,totalPage,onPageChange,totalLearners,totalEnrollLearners,totalTrainers,totalCourses,totalUsers,totalUsersForDashboard,totalCoursesForDashboard,setIsDataManipulated,totalLearnerCoursesForDashboard,totalTrainerCoursesForDashboard }}>
 			{props.children}
 		</UserDataContext.Provider>
 	)

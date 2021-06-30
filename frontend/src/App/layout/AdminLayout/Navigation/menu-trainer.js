@@ -15,21 +15,29 @@ export default {
                     icon: 'fa fa-home'
                 },
                 {
+                    id: 'learners',
+                    title: 'Learners',
+                    type: 'item',
+                    url: '/learners',
+                    classes: 'nav-item',
+                    icon: 'fa fa-users'
+                },
+                {
                     id: 'exam',
                     title: 'Courses',
                     type: 'item',
                     url: '/courses',
                     classes: 'nav-item',
-                    icon: 'fa fa-book'
+                    icon: 'fa fa-star'
                 },
                 {
-                    id: 'exam',
-                    title: 'Exams',
+                    id: 'questions',
+                    title: 'Questions',
                     type: 'item',
-                    url: '/exams',
+                    url: '/questions',
                     classes: 'nav-item',
-                    icon: 'fa fa-graduation-cap'
-                }     
+                    icon: 'fa fa-book'
+                }
             ]
         }
     ]

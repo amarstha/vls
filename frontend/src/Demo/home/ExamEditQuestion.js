@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import {Row, Col, Card, Table, Form, Button,Spinner} from 'react-bootstrap';
+import {Row, Col, Card, Table, Form, Button, Spinner} from 'react-bootstrap';
 import Aux from "../../hoc/_Aux";
 import { retrieveQuestion,updateQuestion } from '../../api';
 import { ToastContainer, toast } from 'react-toastify';
