@@ -74,7 +74,22 @@ const SignUp = () => {
                         <div className="card">
                             <div className="card-body text-center">
                                 <div className="mb-4">
-                                   <Link to="/"><img src={Logo} width="100px" height="100px" style={{ margin: 'auto' }}/></Link>
+                                   <Link to="/">
+                                    <p style={{
+                                              color: "#35A9F5",
+                                              textTransform: "uppercase",
+                                              fontWeight: "bold",
+                                              marginTop: "22px",
+                                              padding: "20px 10px",
+                                              fontSize: "25px",
+                                              lineHeight: "21px"
+                                        }}>E-learning <span style={{ 
+                                            display: "block",
+                                            textTransform: "capitalize",
+                                            fontStyle: "inherit",
+                                            fontSize: "12px"
+                                        }}>Management System</span></p>
+                                   </Link>
                                 </div>
                                 <h3 className="mb-4">Sign up</h3>
                                 <form onSubmit={handleSubmit}>

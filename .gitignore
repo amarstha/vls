@@ -8,7 +8,6 @@ frontend/ISSUE_TEMPLATE.md
 frontend/jsconfig.json
 frontend/LICENSE.md
 frontend/package-lock.json
-**/migrations
 **/__pycache__
 /.idea
 /build
@@ -16,7 +15,6 @@ frontend/package-lock.json
 .pnp.js
 frontend/.eslintcache
 
-db.sqlite3
 .gitignore.save
 
 # misc

@@ -13,7 +13,21 @@ const navLogo = (props) => {
         <Aux>
             <div className="navbar-brand header-logo">
                  <a href={'/dashboard'} className="b-brand">
-                    <img style={{ maxWidth:"80px"}} src={logo} className="mr-8" alt="logo"  width="100%"/>
+                    <p style={{
+                          color: "#fff",
+                          textTransform: "uppercase",
+                          fontWeight: "bold",
+                          marginTop: "22px",
+                          padding: "20px 10px",
+                          marginRight: "40px",
+                          fontSize: "25px",
+                          lineHeight: "21px"
+                    }}>E-learning <span style={{ 
+                        display: "block",
+                        textTransform: "capitalize",
+                        fontStyle: "inherit",
+                        fontSize: "12px"
+                    }}>Management System</span></p>
                  </a>
                 <a href={DEMO.BLANK_LINK} className={toggleClass.join(' ')} id="mobile-collapse" onClick={props.onToggleNavigation}><span /></a>
             </div>

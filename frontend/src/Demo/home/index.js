@@ -72,7 +72,21 @@ const Home = () => {
                 <div className="flex items-center justify-between h-16">
                   <div className="flex items-center">
                     <Link to={'/'} onClick={() => setIsSearchManipulated(false)}>
-                        <img style={{ maxWidth:"65px"}} src={logo} className="mr-8" alt="logo"  width="100%"/>
+                        <p style={{
+                              color: "#fff",
+                              textTransform: "uppercase",
+                              fontWeight: "bold",
+                              marginTop: "22px",
+                              padding: "20px 10px",
+                              marginRight: "40px",
+                              fontSize: "25px",
+                              lineHeight: "21px"
+                        }}>E-learning <span style={{ 
+                            display: "block",
+                            textTransform: "capitalize",
+                            fontStyle: "inherit",
+                            fontSize: "12px"
+                        }}>Management System</span></p>
                       </Link>
                         <div className="bg-white rounded-full border border-gray-400 px-4 py-2 flex">
                         <span className="w-auto flex justify-end items-center text-gray-500">
@@ -158,7 +172,7 @@ const Home = () => {
           )}
       </main>
       <footer class='w-full text-center text-white font-bold border-t border-grey p-4 pin-b theme-bg2'>
-            Copyright &copy; 2021 VlS. All rights reserved.
+            Copyright &copy; 2022 E-Learning Management System. All rights reserved.
       </footer>
     </div>
 	)

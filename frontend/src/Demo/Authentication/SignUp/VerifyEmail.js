@@ -58,7 +58,21 @@ const VerifyEmail = (props) => {
                         <div className="card">
                             <div className="card-body text-center">
                                 <div className="mb-4">
-                                    <Link to="/"><img src={Logo} width="100px" height="100px" style={{ margin: 'auto' }}/></Link>
+                                    <Link to="/">
+                                        <p style={{
+                                              color: "#35A9F5",
+                                              textTransform: "uppercase",
+                                              fontWeight: "bold",
+                                              marginTop: "22px",
+                                              fontSize: "25px",
+                                              lineHeight: "21px"
+                                        }}>E-learning <span style={{ 
+                                            display: "block",
+                                            textTransform: "capitalize",
+                                            fontStyle: "inherit",
+                                            fontSize: "12px"
+                                        }}>Management System</span></p>
+                                    </Link>
                                 </div>
                                 <button className="btn btn-primary shadow-2 mb-4" onClick={handleClick}>Verify your email
                                     {loading && (
