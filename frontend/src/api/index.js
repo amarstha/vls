@@ -231,7 +231,7 @@ function retrieveCourse(Id) {
     }
   };
   return axios.get(
-    `${process.env.REACT_APP_API_BASE_URL}/api/lesson/${Id}`,
+    `${process.env.REACT_APP_API_BASE_URL}/api/lesson/${Id}/`,
     axiosConfig
   );
 }
