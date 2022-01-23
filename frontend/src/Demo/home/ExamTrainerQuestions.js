@@ -99,7 +99,7 @@ function ExamTrainerQuestions() {
 	                                </tr>
 	                            </thead>
 	                            <tbody>
-	                            {data.results && data.results.length > 0 ? (
+	                            {data && data.length > 0 ? (
                     			<>
 		                            {data && data.map((question,index) => (
 	                                    <tr key={index}>

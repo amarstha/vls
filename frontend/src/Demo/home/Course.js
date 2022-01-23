@@ -15,7 +15,7 @@ function Course(props){
     useEffect(() => {
     	setLoading(true)
 	    async function fetchMyAPI() {
-	      let results = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/lesson/${props.match.params.id}`)
+	      let results = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/lesson/${props.match.params.id}/`)
 	      setData(results.data);
 	      setLoading(false)
 
@@ -56,7 +56,7 @@ function Course(props){
 		                            	</div>
 	                            	</a>
 	                            </Tab>
-	                            <Tab eventKey="notifications" title="Notifications">
+	                            {/*<Tab eventKey="notifications" title="Notifications">
 		                            <Accordion defaultActiveKey="1">
 	                            		{notifications && notifications.map((item,index) => (
 										  <Card key={item.id}>
@@ -71,7 +71,7 @@ function Course(props){
 										  </Card>
 										))}
 									</Accordion>
-	                            </Tab>
+	                            </Tab>*/}
 	                        </Tabs>
                         </Card.Body>
                         

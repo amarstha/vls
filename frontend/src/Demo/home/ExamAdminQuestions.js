@@ -99,8 +99,8 @@ function ExamAdminQuestions() {
 	                                </tr>
 	                            </thead>
 	                            <tbody>
-	                            {data.results && data.results.length > 0 ? (
-									<>
+	                            {data && data.length > 0 ? (
+																<>
 			                            {data && data.map((question,index) => (
 		                                    <tr key={index}>
 		                                        <th scope="row"><i className="fas fa-check-circle"></i></th>

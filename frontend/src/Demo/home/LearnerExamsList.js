@@ -77,7 +77,7 @@ const LearnerExamsList = () => {
 	return (
 
     	<tbody>
-            {data.results && data.results.length > 0 ? (
+            {data && data.length > 0 ? (
                 <>
                 	{data && data.map((item,index) => (
                         <tr key={index}>
